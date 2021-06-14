@@ -1,19 +1,20 @@
 // Player & CPU selection
-const playerSelection = 'Scissors'
+const playerSelection = 'scissors'
 const computerSelection = computerPlay();
 
+console.log(playRound(playerSelection, computerSelection), playerSelection, computerSelection);
 
-// Function to generate random choice for CPU
+
+// Function to generate random selection for CPU
 function computerPlay() {
     const options = ['rock', 'paper', 'scissors'];
 
-    return options[Math.floor(Math.random() * 3 + 1)];
+    return options[Math.floor(Math.random() * 3)];
 }
 
-
-// Function to play one round
+// Function to compare player & CPU slections
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+    // playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection === 'rock') {
         if (computerSelection === "scissors") {
@@ -41,13 +42,29 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-// Function for game to play 5 rounds
+// Function for game to play 
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
 
+    console.log(playerSelection);
+    console.log(computerSelection);
+
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(roundResult);
+    console.log(roundResult.includes('Win'));
+    console.log(roundResult.includes('Lose'));
+
+
+    if (roundResult.includes("Win")) {
+        playerScore++;
+    } else if (roundResult.includes("Lose")) {
+        computerScore++;
+    }
+
+    console.log(playerScore);
+    console.log(computerScore);
+
 }
 
-
-console.log(playRound(playerSelection, computerSelection));
+console.log(playGame());
